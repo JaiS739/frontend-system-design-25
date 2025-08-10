@@ -1,0 +1,8 @@
+How the web works:-
+
+Client -> ISP(Internet Service Provider) -> DNS(Domain Name Server) -> back to the client
+
+Now from client after getting the IP address of the requested server it goes to the Actual server and server gives the response to the client.
+
+DNS - tells the server IP code to the client.
+

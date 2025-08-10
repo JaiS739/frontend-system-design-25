@@ -1,1 +1,3 @@
-this is intro file.
+This is an intro fie.
+I am learning from Namaste dev fsd.
+started on - 10 August 2025 in the Morning 10:30.
