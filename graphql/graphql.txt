@@ -1,0 +1,27 @@
+Graphql Benefits:-
+    - Avoid over fetching
+    - Avoid under fetching
+    - Better mobile performance
+    - Efficiency and Precision
+    - Structured and Hierarchial way
+    - strongly typed
+    
+Graphql Building blocks:-
+    - schema/types
+    - Query/Mutation
+    - Resolver
+
+    - schema- SDL - Graphql structured definition language
+        type Country{
+            code: string
+            currency:string
+            phone:string
+            id:ID 
+        }
+        - types 
+            - Scaler - predefined
+            - Custom - defined about as Country
+
+    - Query/Mutation - In case of Graphql, there is only one method ie post
+        - Query - To get the data
+        - Mutation - To mutate the data eg update, create, delete       

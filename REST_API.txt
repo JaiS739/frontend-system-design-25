@@ -1,0 +1,58 @@
+Representational state transfer
+
+- Benefits of Rest:-
+    - Ease of use
+    - Stateless
+    - Scalability
+    - Flexibility with data
+    - Uniform interface
+    - caching
+    - Separation of concern
+    - Interoperability
+    - Ease of testing
+    - Security
+
+- Building blocks of REST:-
+    - URL and its different parts
+    ┌─────────┬──────────────┬─────────────┬──────┬──────────────────────┬─────────────────┬──────────────────┐
+    │ Scheme  │ Subdomain    │ Domain      │ Port │ Path                 │ Query String    │ Fragment         │
+    ├─────────┼──────────────┼─────────────┼──────┼──────────────────────┼─────────────────┼──────────────────┤
+    │ https   │ www          │ example.com │ 8080 │ /path/to/page        │ ?search=react   │ #section2        │
+    └─────────┴──────────────┴─────────────┴──────┴──────────────────────┴─────────────────┴──────────────────┘
+    - TLD - Top level domain
+        .com, .org, .in etc these are called TLD in a url.
+
+- Headers
+    Request Headers- 
+        - Host - Target Host - host:www.1.cdn.example.com
+        - Origin - Origin Host - host:www.example.com
+        - Referrer - Indicates the previous web page making the Request - 
+        - User Agent - Identify the client,  user agent string - Browser name, OS details of the client 
+        - Accept - Response content type - application/json
+        - Accept language - Response Content language 
+        - Connection - Keep TCP connection on - keep-alive or close
+        - Authorization - This header is explicitly added to tell the server who you are or to prove access rights.
+                          Commonly used with API authentication.
+        - Cookie - Automatically sent by the browser
+                 - Typically used for sessions in web apps.
+                 - Tied to a domain (set by server).
+                 - Stored by browser.
+    Response Headers-
+        - Date - When the response was generated
+        - Server - Server info - Nginx or Apache (it should not be shared by the server)
+        - Content-type - type of content - application/json
+        - content-length - length of the content client going to receive
+        - set-cookie - informs about the cookie needs to store for future response
+    Status Code-
+        - 201 - Generally when a new resource is created in case of post
+        - 202 - Accepted the request will send the result later. It is kind of asynchronous.    
+        - 204 - No Content - typically use 204 when the client doesn’t need any data back, only confirmation.
+              - DELETE requests → resource deleted successfully.
+              - PUT/PATCH requests → update succeeded, but nothing to return.
+              - Logout / Session invalidate → action complete, no response needed.
+        - 206 - Partial Content, large files, file download, streaming service
+
+        301 - Moved permanently - requested resource has been permanently moved to a new URL      
+        302 - temporarily located - This resource is somewhere else for now, but expect it to be back here later
+        307 - temporary redirect, it preserves the method eg if you made put request it will be put only.
+        308 - moved permanently - it also preserves but resource is permanently moved. 

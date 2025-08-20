@@ -6,3 +6,64 @@ Now from client after getting the IP address of the requested server it goes to 
 
 DNS - tells the server IP code to the client.
 
+Lets understand each points in detail:-
+
+--client 
+    - in client side these are the process done:-
+        - Browser (cache, service worker)
+        - Operating system
+        - Router
+        - ISP
+--DNS 
+    -ICANN manages the maintenance of namespaces and numerical spaces which enable secure and stable operation of the internet
+    ICANN - Internet Corporation for Assigned name and Numbers    
+
+--TCP Transmission Control Protocol
+    It is a kind of check after DNS lookup 
+    It ensures packets are delivered in the correct order and without error.
+    For each request it will create a TCP.
+    It doesn’t just start blasting data — it first makes sure:
+       - The server is available.
+       - Both sides agree on communication settings.
+       - Both sides are ready to send/receive.
+
+       Imagine you’re starting a phone call:
+
+SYN → "Hi, can you hear me?" 📞
+
+The client sends a SYN (synchronize) packet to the server, asking to start a connection.
+
+SYN + ACK → "Yes, I can hear you — can you hear me?" 🔄
+
+The server replies with a SYN (to start its own side) and an ACK (acknowledgment) to confirm it got the client’s SYN.
+
+ACK → "Yes, I hear you too — let’s talk." ✅
+
+The client sends back an ACK to acknowledge the server’s SYN.
+
+--Flow from Requesting server to final render in the Browser:-
+    - Loading
+        -Request for the page -> get HTML ->
+         Response -> 
+            Render blocking - get CSS (It is render blocking) - 
+                Browser will parse(read) and build DOM and continue parsing until it get css file.
+                It delays the painting til css arrived. 
+            Parser Blocking - get JS (It is parser blocking) -
+                In this case Browser will block parsing HTML as script can have code which can manipulate the DOM tree
+                by using document object.
+
+    - Scripting
+    - Rendering
+    - Painting
+
+
+- Communication Protocols:-
+    HTTP - TCP connection
+    HTTP/3(QUIC) = UDP - data will be lost, will not be in order and it is not reliable.
+
+    HTTPS - There is one more layer of security after TCP connection.
+            In this case the exchange of data between client and server is encrypted.
+            Server will send public key and client will send a session key.
+            Websocket
+    SMTP - It is used for email services.
+    FTP - File transfer protocol. It is used to transfer heavy files.        
