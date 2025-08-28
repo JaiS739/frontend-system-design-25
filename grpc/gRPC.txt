@@ -1,0 +1,57 @@
+gRPC - High performance, open source, Remote procedure call developed by google.
+    - It makes easy for different backend services (microservices) to communicate with each other written in different language.
+    - Example in Microservices
+
+    🔹 What gRPC is Mainly Used For
+
+gRPC is best suited for backend microservices to talk to each other, especially when:
+
+Different programming languages are involved
+
+One service might be written in Java, another in Go, another in Python.
+
+With gRPC, you just define a .proto file (the contract), and it generates client + server code for all these languages.
+
+This way, services don’t care what language the other is written in — they communicate seamlessly.
+
+High performance is needed
+
+Uses HTTP/2 → faster, multiplexed connections.
+
+Uses Protocol Buffers (protobuf) → binary format, much smaller and faster than JSON.
+
+Streaming support is required
+
+REST mostly works with request/response.
+
+gRPC supports bi-directional streaming (both client and server can continuously send messages).
+
+Useful for real-time chat, IoT sensor updates, dashboards.
+
+Imagine you have an e-commerce system with microservices:
+
+Order Service (Java)
+
+Inventory Service (Go)
+
+Payment Service (Python)
+
+They all need to talk to each other quickly:
+
+Order Service → asks Inventory Service if a product is in stock.
+
+Order Service → tells Payment Service to charge the customer.
+
+👉 If you use REST:
+
+You’ll be sending JSON back and forth → bigger payloads, slower parsing.
+
+Different language services must handle JSON serialization/deserialization differently.
+
+👉 If you use gRPC:
+
+Define one .proto contract.
+
+Each service generates its own strongly-typed client code.
+
+Calls look like normal function calls, even across languages.

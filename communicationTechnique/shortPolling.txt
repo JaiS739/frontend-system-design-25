@@ -1,0 +1,7 @@
+1. Short Polling
+
+Client repeatedly sends requests to the server at fixed intervals (e.g., every 5 seconds).
+
+Server responds immediately (even if nothing new).
+
+Simple but wastes resources (lots of unnecessary requests).
