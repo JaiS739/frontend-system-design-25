@@ -5,3 +5,7 @@ Client repeatedly sends requests to the server at fixed intervals (e.g., every 5
 Server responds immediately (even if nothing new).
 
 Simple but wastes resources (lots of unnecessary requests).
+Connection is very short.
+
+Example - Real time system
+          Notification

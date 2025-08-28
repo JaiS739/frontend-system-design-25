@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>Short Polling</h1>
+      <div id="data"></div>
+    </div>
+  </body>
+</html>
+
+<script>
+  async function getUpdatedData() {
+    try {
+      const response = await fetch("http://localhost:8080/getData");
+      const data = await response.json();
+      document.getElementById("data").innerHTML = data.data;
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  setInterval(() => {
+    getUpdatedData();
+  },30000000);
+</script>
