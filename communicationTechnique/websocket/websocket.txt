@@ -1,0 +1,52 @@
+🔌 What is a WebSocket?
+
+    WebSocket is a communication protocol that provides full-duplex (two-way) communication between client (browser) and server over a single, long-lived connection.
+
+    Unlike HTTP (which is request-response), with WebSockets both client and server can send data anytime.
+
+    Yes (at the start):
+
+A WebSocket connection starts as an HTTP request.
+
+The client (browser) sends a special Upgrade header to the server:
+
+Once the handshake is done, communication is no longer HTTP.
+
+It becomes a persistent TCP connection where client and server can continuously exchange frames (messages).
+
+
+What is TCP?
+
+TCP (Transmission Control Protocol) is a transport layer protocol.
+
+Its job is to reliably deliver data between two machines across the internet.
+
+Features of TCP:
+
+Connection-oriented: both sides must establish a connection (like a phone call).
+
+Reliable: ensures no data is lost (if a packet is lost, it is resent).
+
+Ordered: data arrives in the same order it was sent.
+
+Error-checked: corrupted packets are detected and retransmitted.
+
+So, TCP is like the delivery service that makes sure your data (letters) arrive safely and in order.
+
+
+
+Persistent TCP Connection
+
+Normally, when you use TCP, you can either:
+
+Open a connection → send data → close connection.
+
+Or keep it open (persistent).
+
+A persistent TCP connection means:
+
+The TCP connection between client and server stays open.
+
+You can send/receive multiple messages over the same connection without re-establishing it.
+
+👉 WebSocket uses this approach. Once the handshake is done, it keeps the same TCP connection open for both directions.
