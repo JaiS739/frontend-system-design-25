@@ -1,0 +1,18 @@
+Long Polling
+    - Client keeps asking the server, but server holds the request until it has new data. Then client           re-requests immediately.
+
+    🔹 Pros & Cons
+
+✅ Pros
+
+Simpler to implement than WebSockets.
+
+Works with normal HTTP (no special protocol needed).
+
+❌ Cons
+
+Creates lots of requests → heavier on server.
+
+Not truly "real-time", there can be delays.
+
+WebSockets or Server-Sent Events (SSE) are more efficient for constant real-time updates.

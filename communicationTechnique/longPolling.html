@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h2>Long Polling.</h2>
+    </div>
+    <div>
+      <h1 id="longPolling"></h1>
+    </div>
+  </body>
+</html>
+
+<script>
+const getLongPolling = async (lastData) => {
+  try {
+    const response = await fetch(`http://localhost:8080/getPollingData?lastData=${lastData}`);
+    const result = await response.json();
+    document.getElementById("longPolling").innerHTML = result.data;
+
+    // Call again with new data
+    getLongPolling(result.data);
+  } catch (error) {
+    console.error("Polling error:", error);
+    setTimeout(() => getLongPolling(lastData), 2000); // retry after 2s
+  }
+};
+
+getLongPolling("new data");
+
+</script>
