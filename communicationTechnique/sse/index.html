@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="messages">
+      <h1>Server sent event</h1>
+    </div>
+
+    <script>
+      const eventSource = new EventSource("http://localhost:8019/events");
+
+      eventSource.onmessage = (event) => {
+        console.log(event);
+        const data = JSON.parse(event.data);
+        const msg = document.createElement("p");
+        msg.textContent = `[${data.time}] ${data.message}`;
+        document.getElementById("messages").append(msg);
+      };
+
+      eventSource.onerror = () => {
+        console.log("connection lost, trying to reconnect...");
+      };
+    </script>
+  </body>
+</html>
