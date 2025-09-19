@@ -1,0 +1,7 @@
+Server-Sent Events (SSE) is a one-way communication channel where the server can push real-time updates to the client (browser) over an HTTP connection.
+
+Think of it like this:
+
+With normal HTTP, the client asks, server replies, and the connection closes.
+
+With SSE, the client makes one request, and then the server keeps the connection open and continuously sends updates when new data is available.

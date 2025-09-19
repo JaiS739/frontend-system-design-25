@@ -55,4 +55,4 @@ Representational state transfer
         301 - Moved permanently - requested resource has been permanently moved to a new URL      
         302 - temporarily located - This resource is somewhere else for now, but expect it to be back here later
         307 - temporary redirect, it preserves the method eg if you made put request it will be put only.
-        308 - moved permanently - it also preserves but resource is permanently moved. 
+        308 - moved permanently - it also preserves the method but resource is permanently moved. 

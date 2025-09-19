@@ -1,0 +1,19 @@
+single umbrella term → Browser Storage APIs or Client-Side Storage mechanisms is correct.
+
+Storage - 5 - 10 mb per domain
+
+the value in Local Storage will still be there if you close the browser window (or even the entire browser) and open it again.
+
+Data in localStorage:
+
+Has no expiration date.
+
+Survives page reloads, browser restarts, and window closing.
+
+Stays there until explicitly deleted by:
+
+your code (localStorage.removeItem() / localStorage.clear()),
+
+the user (clearing site data / cache),
+
+or browser policies (private browsing, quota exceeded, etc.).

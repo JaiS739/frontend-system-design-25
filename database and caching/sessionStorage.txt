@@ -1,0 +1,79 @@
+1. What is Session Storage?
+
+sessionStorage is a Web Storage API object provided by browsers (like localStorage).
+
+It allows you to store key-value pairs in the browser.
+
+The data is specific to a tab/window session.
+
+It persists until:
+
+The tab/window is closed.
+
+Or the user/browser clears storage manually.
+
+Think of it like a temporary locker that exists only while your browser tab is open.
+
+
+
+How Session Storage Works
+
+Storage is per origin → a unique combination of protocol + host + port.
+
+Example: https://example.com:443 and http://example.com:80 have different session storages.
+
+Storage is per tab:
+
+If you open the same site in a new tab, it gets a new, empty sessionStorage.
+
+If you duplicate a tab, sessionStorage is copied into the new tab at the time of duplication — but from that point on, they diverge (updates in one don’t affect the other).
+
+Data is stored as strings only (you must serialize/deserialize objects).
+
+
+
+1. Storage is per origin
+
+✅ This is true for both localStorage and sessionStorage.
+
+Both are scoped to origin → combination of:
+
+Protocol (http, https)
+
+Host (example.com)
+
+Port (:80, :443, etc.)
+
+So:
+
+https://example.com:443
+
+http://example.com:80
+
+👉 These are different storages for both localStorage and sessionStorage.
+
+
+
+🔹 2. Storage is per tab
+
+Here’s where they differ:
+
+Session Storage
+
+Per tab/window instance.
+
+Opening the same site in a new tab → gets a new, empty sessionStorage.
+
+Duplicating a tab → copies the data at that moment, but afterwards, they diverge.
+
+Closing tab → data is gone.
+
+Local Storage
+
+Shared across all tabs/windows of the same origin.
+
+If you open 5 tabs of https://example.com, all 5 tabs share the same localStorage.
+
+If you update localStorage in one tab, other tabs will see the change (a storage event is fired in other tabs).
+
+Closing/reopening tab or even restarting the browser → data persists until manually cleared.
