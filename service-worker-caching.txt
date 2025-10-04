@@ -1,0 +1,31 @@
+1️⃣ What is a Service Worker?
+
+A Service Worker is a special JavaScript file that runs in the background, separate from your main web page.
+It does not have access to the DOM directly, but it can:
+
+Intercept network requests (like fetch)
+
+Cache resources (HTML, CSS, JS, images, API responses)
+
+Work offline (show content when no internet)
+
+Send push notifications
+
+Do background sync
+
+👉 In short: It’s like a proxy between your browser and the network.
+
+
+✅ In short:
+
+Service Worker = background JS worker that intercepts requests.
+
+Service Worker Caching = storing and reusing network responses (static assets, API data) for offline use & faster performance.
+
+
+
+What is a PWA (Progressive Web App)?
+
+A Progressive Web App (PWA) is a web application (built with HTML, CSS, JavaScript, React, Angular, etc.) that behaves like a native mobile/desktop app.
+
+It’s still a website, but with extra capabilities that make it fast, installable, offline-ready, and app-like.
