@@ -1,0 +1,49 @@
+LCP – Largest Contentful Paint (Loading)
+
+Definition:
+Measures how long it takes for the largest visible element on the screen (above the fold) to fully render after the page starts loading.
+
+Usually, that’s your:
+
+Hero image
+
+Headline <h1>
+
+Video thumbnail
+
+Big background banner
+
+Goal:
+✅ LCP ≤ 2.5 seconds for a good user experience.
+
+
+🧩 Where LCP Problems Come From
+
+The main reasons why LCP becomes slow:
+
+🕓 Slow server response (TTFB)
+
+📦 Large or unoptimized images
+
+⚙️ Render-blocking CSS/JS
+
+🧠 Client-side rendering delay (CSR)
+
+💡 Lazy-loading even critical content
+
+
+Step-by-Step Techniques to Optimize LCP
+    1. Cache pages and assets (CDN caching)
+    2. Use SSR or SSG instead of CSR
+    3. Optimize and preload critical images (user Image of next and use preload in the img tag in case of react)
+    4. Preload critical CSS and fonts
+    5. Lazy-load non-critical content
+    6. Reduce JS execution time
+        - Code-split using dynamic() in Next.js:
+        - lazy in case of react
+        - Use React.memo, useCallback, and useMemo to prevent unnecessary re-renders.
+        - Avoid large libraries on the landing page (moment.js, lodash).
+    7. Optimize server response (TTFB) - Time to first byte
+        - mostly related to backend things.
+        - TTFB - It’s the time between when the browser sends a request to your server → and when it receives the first byte of response (HTML).
+

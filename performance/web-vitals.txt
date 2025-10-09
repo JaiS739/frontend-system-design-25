@@ -1,0 +1,37 @@
+🚀 What Are Web Vitals?
+
+Web Vitals are a set of metrics defined by Google to measure real-world user experience on the web.
+They focus on how users feel when your web app loads and responds — not just technical speed.
+
+
+🧩 What Is LCP (Largest Contentful Paint)?
+
+Definition:
+LCP measures the render time of the largest visible element on the screen — typically within the viewport — from the moment the user starts loading the page.
+
+It tells how quickly the main content becomes visible, so the user feels that the page has loaded.
+
+
+Imagine you open a web page:
+
+The background color appears first — that’s First Paint (FP).
+
+The page’s text or skeleton shows up — that’s First Contentful Paint (FCP).
+
+Finally, the main visible element (like a hero image, big heading, or video thumbnail) loads and appears — that’s LCP.
+
+The moment the user sees the main thing they came for = LCP.
+
+
+
+Eligible elements for LCP:
+
+<img> elements
+
+<image> elements inside <svg>
+
+<video> elements (poster image counts)
+
+Background images via CSS (background-image)
+
+Block-level elements with text (like <h1>, <p>, <div>)
