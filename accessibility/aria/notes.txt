@@ -1,0 +1,18 @@
+🗣️ What is aria-live?
+
+aria-live is used to tell screen readers how they should handle dynamic content updates on a web page.
+
+It’s part of WAI-ARIA’s live region system — which helps people using assistive tech hear about content changes automatically (without moving focus).
+
+🧠 In Simple Words
+
+Whenever content on the screen changes (like a new message, alert, or status),
+aria-live determines when and how urgently screen readers should announce it.
+
+
+
+| Value       | Meaning                                                     | Example Use                     |
+| ----------- | ----------------------------------------------------------- | ------------------------------- |
+| `off`       | Screen reader ignores changes (default)                     | Non-important updates           |
+| `polite`    | Screen reader waits until user finishes current speech      | Notifications, status updates   |
+| `assertive` | Screen reader interrupts immediately to announce the change | Error messages, critical alerts |
