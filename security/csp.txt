@@ -1,0 +1,15 @@
+🧠 What is CSP?
+
+CSP (Content Security Policy) is a powerful security feature built into browsers that helps protect your website from:
+
+Cross-Site Scripting (XSS)
+
+Clickjacking
+
+Data injection attacks
+
+Mixed content (HTTP inside HTTPS)
+
+You set CSP using an HTTP response header that tells the browser:
+
+“What sources of content are allowed to load on my site.”

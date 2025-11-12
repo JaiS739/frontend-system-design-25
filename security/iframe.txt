@@ -1,0 +1,44 @@
+An <iframe> (short for inline frame) is an HTML element used to embed another HTML document (webpage, video, app, etc.) inside the current webpage.
+
+
+🧱 1. What are iframe risks?
+
+Iframes can be dangerous if not handled properly. The main security threats are:
+
+Threat	Description
+Clickjacking	Attacker embeds your site in a hidden iframe and tricks users into clicking buttons (like “Buy” or “Login”) unknowingly.
+Cross-site scripting (XSS)	If an iframe loads untrusted content, it can inject scripts or steal data.
+Data leakage / session theft	If your site is loaded inside another page, the parent might try to read or manipulate it.
+
+
+how to prevent:-
+
+(b) Content-Security-Policy (CSP)
+
+Modern replacement for X-Frame-Options:
+
+Content-Security-Policy: frame-ancestors 'self'
+
+
+or allow specific domains:
+
+Content-Security-Policy: frame-ancestors 'self' https://trusted.com
+
+
+🧰 3. How to protect your app when embedding iframes
+
+If you’re embedding external content in your app:
+
+✅ Use the sandbox attribute
+
+It locks down what the iframe can do.
+
+Example: <iframe src="https://example.com" sandbox></iframe>
+
+This blocks everything — scripts, forms, popups, same-origin access, etc.
+You can selectively allow capabilities:
+
+<iframe
+  src="https://example.com"
+  sandbox="allow-scripts allow-same-origin"
+></iframe>

