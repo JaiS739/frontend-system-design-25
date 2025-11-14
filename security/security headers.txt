@@ -1,0 +1,7 @@
+🌐 1. What are HTTP headers?
+
+HTTP headers are pieces of information sent along with every HTTP request or response between a browser (client) and a server.
+
+They provide metadata about the request or response, such as content type, caching rules, security policies, and more.
+
+Think of headers like labels on a package — they don’t contain the main content itself, but they tell the recipient how to handle the content.

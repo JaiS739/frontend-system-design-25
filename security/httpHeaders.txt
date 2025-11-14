@@ -1,0 +1,78 @@
+Here are few important http headers:-
+
+    -X-Content-Type-Options
+        Prevents the browser from MIME type sniffing, a behavior that can lead to XSS (Cross-Site Scripting) attacks.
+        🧠 Background
+
+Browsers try to “guess” the content type of files if the server doesn’t specify it correctly.
+
+For example:
+
+A file served as text/plain might actually contain HTML or JavaScript.
+
+The browser could then mistakenly execute that script.
+
+This is called MIME sniffing — and it can be dangerous.
+
+🔒 The Fix
+
+You send this HTTP response header:
+
+X-Content-Type-Options: nosniff
+
+It tells browsers:
+
+“Don’t try to guess the content type.
+Only use the type declared in the Content-Type header.”
+
+MIME type sniffing = Browser guessing file type
+nosniff = Don’t let browser guess → safer apps
+
+✅ MIME = Multipurpose Internet Mail Extensions
+
+Originally created for email, but now used everywhere on the web to describe file types such as:
+
+text/html
+
+application/json
+
+image/png
+
+video/mp4
+
+So a “MIME type” is just a standardized way of telling browsers what kind of file it is.
+
+The Content-Type header you send in HTTP request or response is a MIME type.
+
+
+
+Strict-Transport-Security (HSTS)
+🔹 Purpose
+
+Forces browsers to always use HTTPS for your website —
+even if the user tries to access it via plain HTTP.
+
+
+🧠 Background
+
+Normally:
+
+A user types example.com (browser defaults to HTTP).
+
+The server redirects (301) to https://example.com.
+
+That initial HTTP request is insecure — it could be intercepted or tampered with (man-in-the-middle attack).
+
+🔒 The Fix — HSTS
+
+You add this header:
+
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+
+It tells the browser:
+
+“From now on, always use HTTPS for this site for the next 1 year (31536000 seconds).”
+
+So even if someone types http://example.com,
+the browser automatically upgrades it to https://example.com — no insecure step.
