@@ -1,0 +1,94 @@
+Dependency security means keeping your project safe from vulnerabilities that come from the external libraries, packages, or modules you use.
+
+In simple words:
+
+Your code might be safe, but the libraries you install may not be.
+Dependency security is about checking those libraries and keeping them secure.
+
+
+🛡️ What dependency security includes?
+✔️ 1. Checking for known vulnerabilities
+
+Scanning your dependencies for CVEs (Common Vulnerabilities and Exposures).
+
+Tools:
+
+npm audit
+
+Snyk
+
+GitHub Dependabot
+
+OWASP Dependency-Check
+
+Maven OWASP plugin
+
+✅ 1. npm audit
+
+Built-in security scanner for Node.js projects.
+
+🔹 What it does
+
+Scans your package.json + package-lock.json
+
+Looks for known vulnerabilities in dependencies
+
+Shows severity: low, moderate, high, critical
+
+Suggests fixes (upgrade versions, remove dependency)
+
+🔹 How to use
+
+npm audit
+npm audit fix
+
+
+
+✅ 2. GitHub Dependabot
+
+Automated dependency updater built into GitHub.
+
+🔹 What it does
+
+Automatically checks your dependencies for vulnerabilities
+
+Opens Pull Requests to update versions
+
+Works for npm, Maven, Gradle, pip, Docker, etc.
+
+Can automatically fix security issues
+
+🔹 How it works
+
+When GitHub’s security database finds a vulnerability in your repo:
+
+Dependabot sends a Security Alert
+
+Creates a PR with a version upgrade
+
+Example PR title:
+
+“Bump axios from 0.18.0 to 0.21.1”
+
+🔹 Why it's useful
+
+Automatic
+
+Requires zero manual checking
+
+Works directly in your GitHub workflow
+
+🔹 Good for
+
+Teams using GitHub
+
+Projects needing continuous security updates
+
+
+✔️ 2. Preventing malicious or compromised dependencies
+
+✔️ 3. Keeping dependencies up to date
+
+✔️ 4. Avoiding untrusted or unnecessary dependencies
+
+✔️ 5. License and supply-chain security
