@@ -1,0 +1,12 @@
+Software supply chain means everything and everyone involved in building your software, including all the tools, libraries, dependencies, repositories, and services that your code relies on.
+
+In simple words:
+
+A supply chain in coding is the entire path through which your software is built — from the dependencies you install to the servers you deploy on.
+If anything in that chain is compromised, your software becomes vulnerable.
+
+🧩 Why is it called a “supply chain”?
+
+Just like physical products have a supply chain (factory → transport → warehouse → store → customer), software has its own:
+
+Developer → Dependencies → Build Tools → CI/CD → Packages → Deployment → Users
