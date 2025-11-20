@@ -1,0 +1,51 @@
+Input Validation and Sanitization, which are fundamental concepts in web development and security
+
+1️⃣ Input Validation
+
+Definition:
+Input validation is the process of checking whether user input is correct, complete, and meets expected rules before it’s processed or stored.
+
+In short: “Make sure the input looks like what you expect.”
+
+Why it’s important
+
+Prevents invalid or unexpected data from entering your system
+
+Protects against bugs, crashes, or security vulnerabilities
+
+Improves data integrity
+
+Common validation types
+| Type                 | Example                                |
+| -------------------- | -------------------------------------- |
+| **Required**         | Name field cannot be empty             |
+| **Data type**        | Age must be a number                   |
+| **Length**           | Password must be at least 8 characters |
+| **Pattern / Format** | Email must match `/^\S+@\S+\.\S+$/`    |
+| **Range / Limits**   | Age between 1 and 120                  |
+
+
+2️⃣ Input Sanitization
+
+Definition:
+Input sanitization is the process of cleaning input data to remove unwanted or dangerous characters before storing or using it.
+
+In short: “Make the input safe to use.”
+
+Why it’s important
+
+Prevents security attacks, e.g.:
+
+XSS (Cross-Site Scripting) → <script>alert('hack')</script>
+
+SQL Injection → ' OR 1=1 --
+
+Ensures data is clean and consistent
+
+Sanitization libraries
+
+DOMPurify → cleans HTML input for React/web apps
+
+validator.js → validates and sanitizes strings
+
+express-validator → for Node.js / Express backend
