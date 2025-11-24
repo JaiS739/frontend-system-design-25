@@ -1,0 +1,149 @@
+SERVER SIDE REQUEST FORGERY
+Attacker forces your server to make requests to attacker-chosen URLs
+Risk - Access internal network, metadata, admin panels
+
+🛡️ How to Prevent SSRF (Developer Checklist)
+
+1. NEVER trust user input for URLs
+
+If the backend fetches a URL from client → be extremely careful.
+
+2. Allowlist valid domains
+
+Only allow “safe” domains.
+
+3. Block internal/private IPs
+
+Block URLs pointing to:
+
+127.0.0.1
+
+localhost
+
+10.x.x.x
+
+192.168.x.x
+
+169.254.x.x (AWS metadata)
+
+*.internal
+
+
+4. Disable redirects
+
+Attackers use redirects like:
+https://good-domain.com → redirects to → http://localhost/admin
+Your server must detect and block redirect chains.
+
+
+5. Timeout + limit response size
+Prevents scanning internal network.
+
+6. Use safe server libraries
+Some frameworks have SSRF protection built in.
+
+
+🧑‍💻 As a FRONTEND Developer — What Should YOU Do?
+
+Even though SSRF is a backend issue, frontend can also help:
+
+✔ Do NOT give users the ability to send arbitrary URLs
+
+(e.g., “paste any URL to fetch preview”)
+
+✔ Always validate URLs on the frontend
+
+Must be HTTP/HTTPS
+
+Must match allowed patterns
+
+Must not contain IPs
+
+Must not include encoded redirects, e.g. %2F%2F127.0.0.1
+
+
+✅ 1. What is an IP address?
+
+An IP address is a unique number assigned to a device on a network.
+It works like a house address, telling computers where to send data. 
+
+✅ 2. Types of IP Addresses
+
+There are 2 broad types:
+
+A. Public IP
+
+Accessible from the internet
+
+Assigned by your ISP
+
+Example: 103.27.190.54
+
+B. Private IP (Internal IP)
+
+Used inside your home or office network
+
+Not accessible from the internet
+
+Example: devices in your router's WiFi network
+
+Private IP ranges are fixed and standardized:   
+
+
+
+
+✅ Does localhost resolve to 127.0.0.1 using DNS?
+
+Yes — but not using normal internet DNS.
+
+It uses:
+
+✔ The hosts file on your computer
+
+(Not external DNS servers.)
+
+Your system has a special file:
+
+Windows
+
+C:\Windows\System32\drivers\etc\hosts
+
+Linux / macOS
+
+/etc/hosts
+
+Inside it, you will see something like:
+
+127.0.0.1    localhost
+::1          localhost
+
+
+So when you type:
+
+http://localhost
+
+
+Your OS checks your hosts file first, sees the entry, and maps:
+
+localhost → 127.0.0.1
+
+
+✔ No internet DNS involved
+✔ No network call
+✔ It stays inside your machine
+
+So the flow is:
+
+localhost → (hosts file) → 127.0.0.1 → loopback interface → your own machine
+
+
+⭐ What is ::1 ?
+
+::1 is the IPv6 version of 127.0.0.1.
+
+Meaning:
+
+👉 127.0.0.1 in IPv4
+👉 ::1 in IPv6
+
+Both refer to the loopback address — your own computer.
