@@ -1,0 +1,48 @@
+⭐ What is SSJI (Server-Side JavaScript Injection)?
+
+SSJI = Server Side JavaScript Injection
+
+It happens when user input is executed as JavaScript on the server, instead of being treated as plain data.
+
+This is very dangerous, because if an attacker can run JavaScript on your backend, they can:
+
+read files
+
+delete files
+
+run shell commands
+
+access DB credentials
+
+leak environment variables
+
+take full control of your server
+
+It’s similar to SQL Injection,
+but instead of injecting SQL, the attacker injects JavaScript code.
+
+⭐ So what should a frontend developer do?
+
+1. Input Validation (FIRST LAYER)
+
+If expecting an email → allow only valid email format
+If expecting a name → no special characters
+If expecting a number → parse and enforce it
+
+Apply Strict Allowed Inputs (Whitelisting)
+
+Escape user-generated content
+
+Use textContent instead of innerHtml
+
+✅ 6. Prevent XSS — because XSS can lead to SSJI
+
+Here’s how:
+
+Escape HTML
+
+Use CSP headers (backend help needed)
+
+Avoid dangerouslySetInnerHTML (React)
+
+Sanitize HTML inputs
