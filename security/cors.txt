@@ -1,0 +1,123 @@
+CORS - Cross-origin resource sharing
+A browser security feature that controls which websites are allowed to call your backend API.
+
+By default - SOP - Same origin policy
+
+🔥 What is an “Origin”?
+
+Origin = protocol + domain + port
+
+Examples:
+
+URL	Origin
+https://abc.com
+	https://abc.com
+http://localhost:3000
+	http://localhost:3000
+http://localhost:8080
+	http://localhost:8080 (different port → different origin)
+
+
+🔥 When does CORS error happen?
+
+Typical frontend error:
+
+“Access to fetch at <API> from origin <Frontend> has been blocked by CORS policy …”
+
+✔ Backend didn’t send expected CORS headers
+✔ Browser blocked the response
+✔ Not a frontend issue — always a backend configuration issue
+
+
+
+How it works:-
+
+1) Browser decides: is this request simple?
+
+If NOT simple (custom headers, JSON content-type, or non-GET/POST/HEAD), browser sends a preflight OPTIONS request automatically.
+
+Preflight request (browser → server)
+OPTIONS /api/resource HTTP/1.1
+Origin: https://app.example.com
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: content-type, x-custom-header
+
+
+2) Server responds to preflight with CORS policy
+
+Server must reply with appropriate headers to permit the real request:
+
+Essential response headers (example):
+HTTP/1.1 204 No Content
+Access-Control-Allow-Origin: https://app.example.com
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+Access-Control-Allow-Headers: Content-Type, X-Custom-Header, Authorization
+Access-Control-Allow-Credentials: true        // if cookies/credentials are allowed
+Access-Control-Max-Age: 86400                 // cache preflight for 24 hours
+Vary: Origin
+
+
+Rules & important notes:
+
+Access-Control-Allow-Origin must either match the incoming Origin exactly (recommended) or be *.
+
+If Access-Control-Allow-Credentials: true is present, Access-Control-Allow-Origin cannot be * — it must be the explicit origin.
+
+Access-Control-Allow-Headers should include any custom headers the client will send.
+
+Access-Control-Allow-Methods should include the method that will be used.
+
+Access-Control-Max-Age lets the browser cache the preflight response (reduces preflight frequency).
+
+3) Browser sends actual request (if preflight allowed)
+
+Browser sends the real request with the Origin header:	
+POST /api/resource
+Origin: https://app.example.com
+Content-Type: application/json
+X-Custom-Header: 1
+...
+
+
+
+
+🟢 Rules for a Simple Request (No Preflight)
+
+A request is simple if:
+
+1️⃣ Method is ONLY:
+
+GET
+
+POST
+
+HEAD
+
+2️⃣ Headers are ONLY:
+
+Accept
+
+Content-Type → must be this exact list:
+
+application/x-www-form-urlencoded
+
+multipart/form-data
+
+text/plain
+
+Accept-Language
+
+Content-Language
+
+Range (rare)
+
+3️⃣ No custom headers
+
+❌ No Authorization
+❌ No x-auth-token
+❌ No api-key
+
+4️⃣ Content-Type is safe
+
+❌ Not JSON
+application/json causes preflight.
