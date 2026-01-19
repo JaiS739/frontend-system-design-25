@@ -1,0 +1,95 @@
+1️⃣ CJS — CommonJS (.cjs)
+Used by:
+
+Node.js (old default)
+
+Express backend projects
+
+Legacy JS projects
+
+Syntax
+Export:
+
+module.exports = {
+  add
+};
+
+const { add } = require("./math");
+
+
+✔ Synchronous loading
+✔ Works in Node.js by default
+✔ Dynamic imports allowed
+❌ Not supported natively in browsers
+
+
+2️⃣ MJS — ES Module (.mjs)
+This is MODERN JavaScript standard
+
+Used by:
+
+React
+
+Vite
+
+Next.js
+
+Modern Node.js
+
+Browsers
+
+
+export const add = (a, b) => a + b;
+
+import { add } from "./math.js";
+
+
+Characteristics
+
+✔ Tree shaking
+✔ Static imports
+✔ Works in browser
+✔ Faster bundling
+✔ Standardized
+❌ Older Node versions don’t support fully
+
+
+Example Without Tree Shaking
+math.js
+export const add = () => {}
+export const subtract = () => {}
+export const multiply = () => {}
+
+app.js
+import { add } from "./math.js";
+
+add();
+
+
+Without tree shaking:
+
+👉 ALL functions go to bundle:
+
+add + subtract + multiply
+
+
+Even though you used only add.
+
+Example With Tree Shaking
+
+Bundler sees:
+
+import { add } from "./math.js";
+
+
+So it keeps:
+
+✔ add
+❌ subtract (removed)
+❌ multiply (removed)
+
+Final bundle is smaller 🚀
+
+Tree Shaking:
+
+Tree shaking is a build-time optimization that removes unused exports from the final bundle to reduce size and improve performance.
