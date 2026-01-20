@@ -1,0 +1,28 @@
+Details explanation of sorting method of js
+
+when we use sort function it converts into string
+eg:-
+[2,5,1,6,3].sort() first it will convert into string ie ["2", "5", "1", "6", "3"] and then sort
+
+in above case it will work but in case of two digits it wont
+eg:-
+[10, 2].sort() --> [2, 10]
+
+because "10", "2" it will compare 1 of 10 and 2 so 1<2 thats why it will come as [10, 2];
+
+
+so better way is to use a compare function 
+
+like this - 
+    [2,5,1,6,3].sort((a, b) => a-b);
+    The rule is simple:-
+                        if the value is negative (< 0) then a comes before b
+                        if the value is positive (> 0) then a comes after b
+
+- localeCompare()
+To sort string you can use sort method directly but it is good to use localeCompare()
+here are the benefits of using it:-
+    ✅ Proper alphabetical rules
+    ✅ Case insensitive options
+    ✅ Accent support
+    ✅ Internationalization support
