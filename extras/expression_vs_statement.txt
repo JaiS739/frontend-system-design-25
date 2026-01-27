@@ -1,0 +1,20 @@
+Expression - which produces value
+            - {true ? "Hi" : "Hello"}
+            - High order functions, function call
+            - 2+3
+            - "Hello"
+statement - that does not produce any value but control the flow
+            - if() it might look expression due to ternary operator but it is not an expression.
+            - let a = 5;
+
+
+- Think of it like this:
+    Expression: “What is the value?”
+    Statement: “Do this action”
+
+- Expressions produce values → can assign, return, or use in JSX
+
+- Statements perform actions → declare, loop, condition, control flow
+
+- we can use iife in jsx as it is an expression (function call)
+    - we use it because of we can declare variables inside jsx.
