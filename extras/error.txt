@@ -1,0 +1,24 @@
+For practice refer - my folder redux react app and js 
+
+1. Error
+2. TypeError
+3. ReferenceError
+
+✅ 1)  Error - try-catch vs .catch()
+    - This is the base error class in JavaScript.
+        - You usually use it when you want to throw custom application errors.
+        eg - throw new Error("Token missing");
+
+✅ 2) TypeError
+    - Occurs when you perform invalid operations on a value type.
+        - const name = null;
+            name.toUpperCase();
+        - output - TypeError: Cannot read properties of null
+
+✅ 3) ReferenceError
+    - Occurs when you use a variable that does NOT exist.
+
+
+- Try catch does not catch render error.
+
+

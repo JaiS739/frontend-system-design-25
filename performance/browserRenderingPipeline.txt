@@ -1,0 +1,72 @@
+🧠 How a Browser Draws a Web Page
+    - When a browser renders a page, it roughly goes through three important stages.
+
+1️⃣ Layout (Reflow)
+    The browser calculates:
+    Where each element should appear
+    How big each element is
+        - Example things calculated:
+
+            width
+            height
+            top / left
+            margins
+            padding
+            position
+            Example:    
+                - .box {
+                    width: 200px;
+                    height: 100px;
+                    }
+
+                    Browser must calculate:
+                        Position of box
+                        Size of box
+                        Impact on surrounding elements
+
+    the browser must recalculate layout for many elements.
+    This step is called Reflow.           
+    ⚠️ Reflow is expensive because it may affect the whole page layout.
+
+
+2️⃣ Paint
+    After layout is known, the browser draws pixels.
+    This means applying:
+    colors
+    borders
+    shadows
+    text
+    images             
+
+
+3️⃣ Composite
+    In the final stage, the browser combines layers together to show the final frame.
+    Modern browsers place some elements on GPU layers.
+    Then the GPU can move those layers without recalculating layout or repainting.
+    This stage is called Compositing.
+    This is very fast.    
+
+3️⃣ What are GPU Layers?
+
+Modern browsers split the page into layers.
+
+Example page:   
+
+Header
+Sidebar
+Content
+Modal
+
+The browser may create layers like this:
+
+Layer 1 → background
+Layer 2 → sidebar
+Layer 3 → modal
+Layer 4 → dropdown
+
+Each layer is like a separate image.    
+
+
+4️⃣ What does “moving GPU layers” mean?
+    Imagine the browser already drew the page.
+    Instead of redrawing everything, the GPU just moves the existing layer.

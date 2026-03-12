@@ -1,0 +1,7 @@
+What exactly does SameSite control?
+- It controls this ONE thing:
+    - Should the browser include cookies in this request or not?
+
+Where does SameSite apply?
+- Applied when cookie is SET
+    - Set-Cookie: accessToken=abc; SameSite=Lax

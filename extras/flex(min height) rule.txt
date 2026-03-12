@@ -1,0 +1,11 @@
+sometime scroll does not work in flex
+
+let say you have a parent and child 
+    - parent - height - 300px, display: flex,
+    - child - overflow scroll
+    now lets say if child has a lot content and it is going beyond the parent 300px height limit then height of the parent will increase
+    instead of scrolling
+
+    whey because child has a by default min-height as auto so browser thinks this would be the minimum height of the content (child) I should increase up to the content.
+
+    so we can give min height as 0 so now  
