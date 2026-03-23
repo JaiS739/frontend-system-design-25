@@ -1,0 +1,33 @@
+🧠 What is a React Element?
+    👉 A React Element is a plain JavaScript object that describes what should appear on the UI.
+
+    when you write 
+
+        <h1>Hello</h1>
+
+        👉 React converts it to:
+            {
+                type: "h1",
+                props: {
+                    children: "Hello"
+                }
+            }
+
+    💡 Important points
+        - It is NOT a DOM node
+        - It is just a description
+        - React uses it to decide what to render
+
+React Element is a blueprint for virtual DOM, not real DOM
+
+
+React Element = unit / node building block of Virtual DOM
+
+Virtual DOM = tree of React Elements
+
+JSX → React Elements → Virtual DOM (tree of elements) → Real DOM
+
+
+we can create a react element using - 
+    const element = React.createElement("h1", null, "Hello");
+    React.createElement(type, props, children)
