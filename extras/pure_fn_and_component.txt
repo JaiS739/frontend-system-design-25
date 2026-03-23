@@ -1,0 +1,10 @@
+Pure function - A pure function is:-
+    - It does not change the output for the same input 
+        - function add (a, b){
+            return a+b
+        }
+        - the above function will always give add(2, 3) = 5 it wont change the output if I give the same input
+    
+    - It will not change anything outside then function (no side effects);
+
+Pure component - A pure component only re-renders when its props change.

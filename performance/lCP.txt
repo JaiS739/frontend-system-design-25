@@ -1,4 +1,4 @@
-LCP – Largest Contentful Paint (Loading)
+LCP – Largest Content ful Paint (Loading)
 
 Definition:
 Measures how long it takes for the largest visible element on the screen (above the fold) to fully render after the page starts loading.

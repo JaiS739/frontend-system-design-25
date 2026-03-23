@@ -1,0 +1,78 @@
+What is reconciliation in React?
+
+    Reconciliation is the process where React compares the previous Virtual DOM with the new one
+    It uses a diffing algorithm to identify changes
+    Then updates only the necessary parts of the real DOM for better performance
+
+
+🧠 Are render & commit part of reconciliation?
+
+    👉 ✅ Yes — they are part of the reconciliation process
+
+🚀 Important advanced point (interview gold)
+
+    👉 Render phase can be:
+
+        - Paused
+        - Re-run
+        - Aborted
+
+    👉 Commit phase:
+
+        - Always runs once
+        - Cannot be interrupted
+
+
+
+👉 What is key?
+
+    Key is a unique identifier for elements in a list
+    Helps React identify which items changed, added, or removed
+    Improves performance and avoids incorrect UI updates
+
+    eg
+        - {["A", "B", "C"].map(item => <li>{item}</li>)}
+        after update:-
+        - ["B", "C", "D"]
+
+        with Key 
+        👉 Only necessary updates happen ✅
+
+            | Key | Result  |
+            | --- | ------- |
+            | A   | removed |
+            | B   | same    |
+            | C   | same    |
+            | D   | added   |
+
+
+🟡 Step 1: Render Phase (Calculation phase)
+    👉 React does NOT touch the real DOM here
+
+    It only:
+        Creates new Virtual DOM
+        Compares with old Virtual DOM
+        Decides what needs to change
+
+        Before:
+            <h1>Count: 0</h1>
+        After:
+            <h1>Count: 1</h1>
+
+        👉 In render phase React thinks:
+            “Only text changed, everything else is same”                
+
+
+    🟢 Step 2: Commit Phase (Apply changes)
+        👉 Now React updates real DOM
+
+        So it does:
+            Count: 0 → Count: 1
+
+        👉 Only this part updates ✅
+
+🎯 Simple analogy
+
+    Render phase = planning 🧠
+
+    Commit phase = execution 🛠️

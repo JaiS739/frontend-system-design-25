@@ -1,0 +1,15 @@
+🧠 Simple Analogy
+
+Think of React like:
+
+    🧠 Render phase
+
+        - “Let me plan what to build”
+
+    🔨 Commit phase
+
+        - “Now actually build it in the real world”
+
+React works in two main phases:
+    1. Render Phase  🧠 (calculate what should change)
+    2. Commit Phase  🖥️ (apply changes to the DOM)        

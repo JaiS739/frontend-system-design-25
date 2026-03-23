@@ -9,3 +9,6 @@ let say you have a parent and child
     whey because child has a by default min-height as auto so browser thinks this would be the minimum height of the content (child) I should increase up to the content.
 
     so we can give min height as 0 so now  
+
+
+    Note - By default height of any element is auto

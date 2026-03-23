@@ -17,4 +17,4 @@ statement - that does not produce any value but control the flow
 - Statements perform actions → declare, loop, condition, control flow
 
 - we can use iife in jsx as it is an expression (function call)
-    - we use it because of we cannot declare variables inside jsx.
+    - we use it because we cannot declare variables inside jsx.
