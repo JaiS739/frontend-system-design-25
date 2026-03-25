@@ -1,0 +1,42 @@
+@
+when we see @before any package name in the package.json file 
+    @ → scoped package (belongs to a company/team)
+    @ant-design/icons
+    👉 Break it like this:
+        - @ant-design → organization / company
+        - icons → package name
+
+version numbers - 
+    @5.6.1
+        5 → major version
+        6 → minor
+        1 → patch
+
+deduped (de duplicated)→ only one copy installed
+
+
+Versioning in npm - 
+    🧠 1. Version format (basic)
+        5.6.1
+        👉 This is called Semantic Versioning (SemVer)
+            5 → Major version
+            6 → Minor version
+            1 → Patch version
+
+            ✅ Patch (last number)
+                👉 Bug fixes only (safe)
+
+            ✅ Minor (middle number)
+                👉 New features (still safe)    
+
+            ✅ Major (first number)
+                👉 Breaking changes (can break your app 😬)
+
+    🧠 3. What does ^ mean?
+        - "Install latest version, but stay within same MAJOR version"
+
+    🧠 4. What does ~ mean?
+        - "Only update PATCH version"
+
+    🧠 5. No symbol (exact version)
+        - nothing allowed                    
