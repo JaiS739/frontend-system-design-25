@@ -70,3 +70,32 @@ Each layer is like a separate image.
 4️⃣ What does “moving GPU layers” mean?
     Imagine the browser already drew the page.
     Instead of redrawing everything, the GPU just moves the existing layer.
+
+
+
+Complete flow:- (this is detailed version of above one)
+
+    - React rendering pipeline flow looks like this -
+        React Render → DOM Update → Layout → Paint → Screen
+
+1. Render (React Render Phase)
+    - This is also called reconciliation. so here react compares new DOM with previous DOM and decides what UI should look like.
+    👉 Reconciliation = compare old vs new Virtual DOM → decide change
+
+2. DOM Update (Commit Phase)
+    - React updates the real DOM.
+    - Now browser has actual elements, it means that in the browser memory we have all the html part but in the UI
+        eg - element attributes styles and all which you see in the jsx 
+
+3. Layout (Reflow)
+    Here browser calculates 
+        width 
+        height
+        position
+    eg - where should this div appear 
+       - how big it should be
+
+
+4. Paint
+    Browser draws pixels on screen
+    This stage where we see actual UI       

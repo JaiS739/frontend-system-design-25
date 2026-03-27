@@ -1,0 +1,82 @@
+useLayoutEffect - It happens before browser paints (actual UI in the browser)
+    - It blocks paint 
+    - It forces browser to recalculate the layout (Reflow) so it is expensive
+
+useEffect - It happens after browser paints.
+    - It does not block the paint
+    - Less expensive as Layout is already there
+
+
+Here is the Visual Timeline -
+    [ React Render ]
+        ↓
+    [ DOM Update ]
+            ↓
+    🔴 useLayoutEffect (blocking)
+            ↓
+    [ Layout + Paint 🎨 ]
+            ↓
+    🟢 useEffect (non-blocking)
+
+Main difference (Important) lets take an Example
+
+ - You want to show a box based on its actual height
+
+        function Box() {
+            const ref = useRef(null);
+            const [height, setHeight] = useState(0);
+
+            useEffect(() => {
+                const h = ref.current.offsetHeight;
+                setHeight(h);
+            }, []);
+
+            return (
+                <div ref={ref}>
+                Actual height: {height}
+                </div>
+            );
+        }
+
+
+🔴 What happens with useEffect
+
+    1. First render
+   height = 0 (initial state)
+
+    2. DOM update
+    <div>Actual height: 0</div>
+
+    3. Paint happens
+    👉 USER SEES: "Actual height: 0" ❌ (wrong)
+
+    4. useEffect runs
+    👉 reads real height (say 200)
+
+    5. setHeight(200)
+
+    6. Re-render
+
+    7. Paint again
+    👉 USER SEES: "Actual height: 200" ✅
+
+    
+
+🔥 Now same with useLayoutEffect
+    1. First render
+   height = 0
+
+    2. DOM update
+    <div>Actual height: 0</div>
+
+    3. useLayoutEffect runs (BEFORE paint!)
+    👉 reads height = 200
+    👉 setHeight(200)
+
+    4. Re-render happens immediately
+
+    5. DOM updated again
+    <div>Actual height: 200</div>
+
+    6. Paint happens
+    👉 USER SEES: "Actual height: 200" ✅

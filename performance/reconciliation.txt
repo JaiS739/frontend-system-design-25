@@ -4,11 +4,6 @@ What is reconciliation in React?
     It uses a diffing algorithm to identify changes
     Then updates only the necessary parts of the real DOM for better performance
 
-
-🧠 Are render & commit part of reconciliation?
-
-    👉 ✅ Yes — they are part of the reconciliation process
-
 🚀 Important advanced point (interview gold)
 
     👉 Render phase can be:
