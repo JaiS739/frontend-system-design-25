@@ -1,0 +1,32 @@
+so we have window and we can use it to get url details 
+
+- window.location.href = full url
+- window.location.pathname = pathname no query params
+- window.location.search = query parameters
+
+const params = new URLSearchParams();
+
+uses -
+    const url = https://www.localhost:3000/admin?name=jai&code=4edded9jdud93jd
+    const params = new URLSearchParams(window.location.search);
+    params.get(name); -> jai
+
+
+    also we can use it to add encoded query parameters in the url
+
+    const params = new URLSearchParams();
+    params.append("name", "jai krishna");
+    params.append("code", "4edded9jdud93jd");
+    and then we can use it in the url 
+    like params.toString() in the url
+
+    encoded means here 
+        URLs can only safely contain certain characters:
+            Letters (a–z, A–Z)
+            Numbers (0–9)
+            Some symbols (- _ . ~)
+
+            if there is a value like - ?search=hello world then it may return error
+
+In next js we should be aware to use window related to url things, so we should use next js hook
+usePathname, useSearchParams
