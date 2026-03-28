@@ -7,9 +7,9 @@ so we have window and we can use it to get url details
 const params = new URLSearchParams();
 
 uses -
-    const url = https://www.localhost:3000/admin?name=jai&code=4edded9jdud93jd
+    const url = https://localhost:3000/admin?name=jai&code=4edded9jdud93jd
     const params = new URLSearchParams(window.location.search);
-    params.get(name); -> jai
+    params.get("name"); -> jai
 
 
     also we can use it to add encoded query parameters in the url
@@ -18,7 +18,7 @@ uses -
     params.append("name", "jai krishna");
     params.append("code", "4edded9jdud93jd");
     and then we can use it in the url 
-    like params.toString() in the url
+    like params.toString() in the url. It does not include ? so add it explicitly
 
     encoded means here 
         URLs can only safely contain certain characters:
@@ -26,7 +26,7 @@ uses -
             Numbers (0–9)
             Some symbols (- _ . ~)
 
-            if there is a value like - ?search=hello world then it may return error
+            if there is a value like - ?search=hello world It causes incorrect parsing / broken URL
 
 In next js we should be aware to use window related to url things, so we should use next js hook
 usePathname, useSearchParams
