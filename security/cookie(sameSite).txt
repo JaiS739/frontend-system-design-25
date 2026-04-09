@@ -1,7 +1,30 @@
-What exactly does SameSite control?
-- It controls this ONE thing:
-    - Should the browser include cookies in this request or not?
+So when we should set the cookie from backend only for access token and refresh token
+here are the properties fro cookies setting from backend 
+    - SameSite
+    - Secure
+    - HttpOnly
 
-Where does SameSite apply?
-- Applied when cookie is SET
-    - Set-Cookie: accessToken=abc; SameSite=Lax
+
+there are three types of SameSite
+    - None - Only same-site requests Requires Secure=true
+    - Lax - Send cookie in normal cases, but not in risky cross-site requests
+    - Strict - Only same-site requests
+
+Secure works with HTTPS
+    so if we are using localhost which is generally http so we can not set secure as true
+
+    so for local 
+        SameSite as Lax
+        secure as false
+    but for production is should be 
+        SameSite as none
+        Secure as true        
+
+CORS Layer:-
+"Who is allowed to call my backend?"
+
+    Access-Control-Allow-Origin
+    Access-Control-Allow-Credentials   
+
+    if allow-credentials is true (send cookie from browser) then Access-Control-Allow-Origin can not be * it should have in ["http:localhost:3000", "https:google.com"]
+
