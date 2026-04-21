@@ -38,3 +38,20 @@ Next.js provides multiple optimized image sizes, and the browser downloads the m
 It’s not Next.js deciding alone:
 👉 Next.js provides multiple options
 👉 Browser chooses the best one using srcset
+
+
+Benefits of next Image tag-
+    - Modern formats
+    Converts images to efficient formats like WebP / AVIF (if browser supports)
+
+    👉 Smaller file size, same quality
+
+    - Lazy loading
+    Images load only when they come into view
+
+    👉 Improves initial page speed   
+
+    - Prevents layout shift (very important)
+    You must provide width & height
+
+    👉 Avoids UI jumping (CLS issue) 
