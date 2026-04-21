@@ -1,0 +1,40 @@
+Next.js provides multiple optimized image sizes, and the browser downloads the most appropriate (usually smaller) one based on device and screen size.
+
+🧠 With normal <img>
+    ✅ What actually happens
+    Browser downloads the full image (3000px)
+    Then scales it down visually to fit the screen
+
+📱 On mobile
+    If you have:
+    <img src="big-image.jpg" style="width: 100%;" />
+    👉 On mobile:
+
+    It will look small / fit the screen ✅
+    It will NOT appear huge or overflow (if styled properly)    
+
+
+👉 On mobile:
+
+    It will look small / fit the screen ✅
+    It will NOT appear huge or overflow (if styled properly)
+
+
+🧠 With Next js <Image> 
+    If original image = 3000px
+
+    Next.js generates:
+
+    300px
+    600px
+    1200px
+
+    👉 Then:
+
+    Mobile → downloads ~300px image ✅
+    Tablet → maybe 600px
+    Desktop → maybe 1200px   
+
+It’s not Next.js deciding alone:
+👉 Next.js provides multiple options
+👉 Browser chooses the best one using srcset

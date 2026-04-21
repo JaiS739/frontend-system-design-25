@@ -131,7 +131,7 @@ Summary of all-
 
     🚀 Next.js
         Transpile → Bundle per page (on demand) → Store in memory → Cache in .next → Serve
-        Uses: SWC
+        Uses: SWC to transpile (Replacement for Babel)
         node_modules: ✅ bundled (per page)
         Memory: ✅ main
         Disk (.next): ✅ cache (partial, unstable)    
@@ -156,3 +156,7 @@ Summary of all-
         Next.js = bundle smartly (per page)
         Vite = don’t bundle (in dev), just serve modules    
 
+
+❓ What happens in npm run build?
+    CRA → Babel + Webpack bundle
+    Vite → esbuild + Rollup bundle

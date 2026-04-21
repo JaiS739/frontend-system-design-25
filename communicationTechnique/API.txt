@@ -1,0 +1,6 @@
+What is an API?
+- API = a set of rules/interfaces that allow one program (or component) to use the functionality of another
+- API = a way for a program to use the functionality of another program
+
+What do you mean by interface?
+- Interface = a contract that defines what operations are available, without specifying how they are implemented.
