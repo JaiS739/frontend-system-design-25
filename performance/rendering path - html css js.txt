@@ -1,0 +1,42 @@
+The Critical Rendering Path is the sequence of steps a browser follows to convert HTML, CSS, and JavaScript into pixels on the screen.
+
+🟢 1. DOM Construction (HTML Parsing)
+    Browser reads HTML line by line
+    Builds the DOM (Document Object Model)
+    Happens immediately as HTML is received (streaming)
+
+🟢 2. CSSOM Construction (CSS Parsing)
+    CSS files are downloaded in parallel
+    Browser converts CSS into CSSOM (CSS Object Model)    
+
+🟢 3. Render Tree Creation
+    DOM + CSSOM combine to form the Render Tree
+    Only visible elements are included    
+
+🟢 4. Layout (Reflow)
+    Browser calculates:
+    size
+    position of elements
+
+🟢 5. Paint
+    Browser converts elements into pixels on screen    
+
+⚠️ Blocking behavior
+🔴 CSS (Render-blocking)
+    Browser delays first paint
+    Because it needs complete CSSOM to avoid incorrect layout or flicker
+
+🔴 JavaScript (Parser-blocking)
+    JS can pause HTML parsing
+    Because it may modify DOM or styles 
+
+⚡ Important concept
+    👉 Browser does NOT wait for everything to load
+    👉 It renders progressively when enough information is available       
+
+
+🧠 Final flow (easy to remember)
+    HTML → DOM
+    CSS → CSSOM
+    DOM + CSSOM → Render Tree
+    Render Tree → Layout → Paint
