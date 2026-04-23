@@ -1,0 +1,31 @@
+⚡ npm ci — Summary
+
+👉 npm ci = clean, strict, reproducible install
+
+🧠 What it does
+🧹 Deletes node_modules
+📦 Installs from package-lock.json ONLY
+🔍 Checks package.json === package-lock.json
+❌ Fails if mismatch
+
+🚫 What it does NOT do
+❌ Does NOT update versions
+❌ Does NOT modify package-lock.json
+❌ Does NOT try to fix issues
+
+🆚 vs npm install
+
+| Feature           | `npm install` | `npm ci` |
+| ----------------- | ------------- | -------- |
+| Flexible          | ✅             | ❌        |
+| Updates lock file | ✅             | ❌        |
+| Strict check      | ❌             | ✅        |
+| Used in CI/CD     | ❌             | ✅        |
+
+
+🎯 When to use
+
+👉 Use npm ci when:
+
+Running builds (Jenkins, pipelines)
+You want exact same dependencies every time
