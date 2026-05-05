@@ -1,0 +1,104 @@
+const [count, setCount] = useState(0);
+“count is const → how is it changing?”
+
+💥 Reality: count is replaced, not mutated
+
+Every render:
+    // Render 1
+    const [count, setCount] = useState(0); // count = 0
+
+    // After setCount(1)
+
+    // Render 2
+    const [count, setCount] = useState(1); // NEW variable
+
+🔁 React Flow (very important)
+Step-by-step:
+    1. Initial render
+    count = 0
+
+    2. You call:
+    setCount(1)
+
+    3. React:
+    Stores new state internally
+    Triggers re-render
+
+    4. Component runs again
+        count = 1
+    count is not reassigned → it is recreated
+
+Because React follows:
+❗ Immutable state + re-render model    
+
+Instead of:
+    count = count + 1; // mutation
+
+React does:    
+    setCount(prev => prev + 1); // new state
+
+
+🔥 One-line answer (interview-ready):-
+
+const prevents reassignment of a variable binding, but in React, state variables from useState are not mutated—instead, React stores state internally and provides a new value on each render, so the variable is recreated rather than changed.
+
+
+some important points-
+count is just a local variable snapshot
+
+    - const [count, setCount] = useState(0);
+    👉 On every render:
+    React gives you the current state value
+    You store it in a local variable (count)
+    That variable exists only for that render
+
+🔍 Why “snapshot”?
+
+Think of it like a photo 📸
+    Render 1 → count = 0 (photo taken)
+    Render 2 → count = 1 (new photo)
+    Render 3 → count = 2 (new photo)
+
+👉 Each render gets its own fixed value
+That count does not change during that render
+
+🧠 What is “stale closure”?
+A stale closure happens when a function uses an old value of state/props because it captured that value from a previous render.
+
+Simple example
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setTimeout(() => {
+      console.log(count);
+    }, 2000);
+  }
+
+  return (
+    <>
+      <button onClick={handleClick}>Log after 2s</button>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </>
+  );
+}
+
+🧠 What happens step-by-step
+1. Initial render
+    count = 0
+
+2. Click “Log after 2s”    
+    setTimeout callback captures count = 0
+
+3. Before 2 seconds, click “Increment”
+    count = 1 (new render)
+
+4. Timeout runs
+    console.log(count);
+
+💥 That’s stale closure
+The callback used old state (0) even though current state is 1    
+
+Because:
+    The function “remembers” the value from when it was created

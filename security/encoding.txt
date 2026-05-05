@@ -1,0 +1,52 @@
+🔹 1. Encoding
+
+    👉 Purpose:
+    To convert data into a different format so it can be easily stored or transmitted
+
+    👉 Key point:
+
+    NOT meant for security
+    Anyone can decode it (no secret needed)
+
+
+🔹 2. Encryption
+
+    👉 Purpose:
+    To protect data so that only authorized people can read it
+
+    👉 Key point:
+
+    Requires a key (secret)
+    Without the key → data is useless
+
+🧠 Core Difference
+
+| Feature    | Encoding              | Encryption             |
+| ---------- | --------------------- | ---------------------- |
+| Purpose    | Format change         | Security               |
+| Reversible | Yes (no key needed)   | Yes (key required)     |
+| Secret key | ❌ No                 | ✅ Yes                |
+| Use case   | Data transfer/storage | Protect sensitive data |
+| Example    | Base64                | AES, RSA               |
+
+
+
+
+Base64 → transforms data format (binary → text)
+UTF-8 → It is a standard which defines how characters are stored
+
+Categories:-
+1. Character Encodings (text → bytes)
+UTF-8 ✅
+ASCII ✅
+
+👉 Used to store text in memory
+
+2. Binary-to-Text Encodings
+Base64 ✅ - base 64 uses this only - A–Z, a–z, 0–9, +, /
+
+👉 Used to safely transmit binary data
+
+3. Transport Encodings
+URL Encoding ✅
+👉 Used for safe transmission in URLs
