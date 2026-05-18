@@ -39,12 +39,10 @@ Categories:-
 1. Character Encodings (text → bytes)
 UTF-8 ✅
 ASCII ✅
-
 👉 Used to store text in memory
 
 2. Binary-to-Text Encodings
 Base64 ✅ - base 64 uses this only - A–Z, a–z, 0–9, +, /
-
 👉 Used to safely transmit binary data
 
 3. Transport Encodings
