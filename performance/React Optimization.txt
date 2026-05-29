@@ -1,0 +1,239 @@
+# React Optimization Notes
+
+## Shallow Comparison
+
+Shallow comparison means React checks only the first-level values or references of objects. It does not recursively check nested properties. Primitive values like strings, numbers, and booleans are compared by value, while objects, arrays, and functions are compared by reference.
+
+Example:
+
+```js
+const obj1 = { name: "Jai" };
+const obj2 = { name: "Jai" };
+
+obj1 === obj2 // false
+```
+
+Even though values are same, references are different.
+
+React features like `React.memo`, `PureComponent`, dependency arrays in `useEffect`, and Redux optimizations use shallow comparison.
+
+---
+
+## Deep Comparison
+
+Deep comparison recursively checks all nested properties inside an object or array.
+
+Example:
+
+```js
+const obj1 = {
+  user: {
+    name: "Jai",
+  },
+};
+
+const obj2 = {
+  user: {
+    name: "Jai",
+  },
+};
+```
+
+Deep comparison checks:
+
+* user
+* user.name
+
+Deep comparison is more expensive because React has to traverse nested structures.
+
+React avoids deep comparison for performance reasons.
+
+---
+
+# Why Immutable Updates are Important
+
+React optimization relies heavily on reference changes.
+
+Wrong way (mutation):
+
+```js
+user.address.city = "Delhi";
+```
+
+Here the object reference remains the same, so React may not detect changes.
+
+Correct immutable update:
+
+```js
+setUser({
+  ...user,
+  address: {
+    ...user.address,
+    city: "Delhi",
+  },
+});
+```
+
+This creates new references, allowing shallow comparison to detect changes correctly.
+
+---
+
+# React.memo
+
+`React.memo` is a Higher Order Component (HOC) used to prevent unnecessary re-renders of functional components.
+
+It performs shallow comparison of props.
+
+Syntax:
+
+```jsx
+function Child(props) {
+  return <h1>Child</h1>;
+}
+
+export default React.memo(Child);
+```
+
+Behavior:
+
+* If props are unchanged → component render is skipped
+* If props change → component re-renders
+
+Important:
+
+* React.memo only optimizes props-based re-renders
+* It does NOT stop re-renders caused by:
+
+  * local state changes
+  * context changes
+
+---
+
+# useMemo
+
+`useMemo` memoizes a computed value or object so that it is not recreated on every render.
+
+Syntax:
+
+```jsx
+const user = useMemo(() => {
+  return { name: "Jai" };
+}, []);
+```
+
+Without useMemo:
+
+```jsx
+const user = { name: "Jai" };
+```
+
+A new object is created on every render, causing React.memo optimization to fail.
+
+Use cases:
+
+* Memoizing objects
+* Memoizing arrays
+* Expensive calculations
+* Stable references for optimized child components
+
+Important:
+
+* useMemo returns a memoized VALUE
+
+---
+
+# useCallback
+
+`useCallback` memoizes a function reference.
+
+Syntax:
+
+```jsx
+const handleClick = useCallback(() => {
+  console.log("clicked");
+}, []);
+```
+
+Without useCallback:
+
+```jsx
+const handleClick = () => {};
+```
+
+A new function is created on every render.
+
+Use cases:
+
+* Passing stable callbacks to memoized child components
+* Preventing unnecessary child renders
+* Stable dependency references
+
+Important:
+
+* useCallback returns a memoized FUNCTION
+
+---
+
+# Difference Between useMemo and useCallback
+
+| Hook        | Returns           |
+| ----------- | ----------------- |
+| useMemo     | Memoized value    |
+| useCallback | Memoized function |
+
+---
+
+# Common Interview Questions
+
+## Why does React use shallow comparison instead of deep comparison?
+
+Because deep comparison is expensive and hurts performance.
+
+---
+
+## Why do objects/arrays/functions cause unnecessary re-renders?
+
+Because they are compared by reference, and new references are created on every render.
+
+---
+
+## When should React.memo be used?
+
+Use React.memo when:
+
+* Child renders frequently
+* Parent re-renders often
+* Props usually remain unchanged
+* Rendering is expensive
+
+---
+
+## When should useMemo/useCallback be avoided?
+
+Avoid unnecessary memoization because memoization itself has memory and comparison costs.
+
+Use them only when:
+
+* Preventing expensive recalculations
+* Preventing unnecessary child renders
+* Stabilizing references
+
+---
+
+# Important Final Understanding
+
+React optimization is mainly based on:
+
+* Reference equality
+* Shallow comparison
+* Immutable updates
+
+Core concepts connected together:
+
+* React.memo
+* useMemo
+* useCallback
+* PureComponent
+* Redux optimization
+* Dependency arrays
+* Context optimization
