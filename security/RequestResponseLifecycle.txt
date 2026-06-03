@@ -1,0 +1,229 @@
+Request-Response Lifecycle of a Web Application
+
+# Complete Website Request Lifecycle (Interview Notes)
+
+## 1. User Enters URL
+
+Example:
+
+https://www.google.com
+
+Browser parses:
+
+* Protocol: HTTPS
+* Domain: google.com
+* Path: /
+
+---
+
+## 2. DNS Lookup
+
+Purpose:
+Convert domain name into IP address.
+
+Example:
+
+google.com
+↓
+142.250.xxx.xxx
+
+DNS acts like the internet's phonebook.
+
+---
+
+## 3. TCP 3-Way Handshake
+
+Purpose:
+Establish a reliable connection.
+
+Steps:
+
+1. SYN
+2. SYN-ACK
+3. ACK
+
+Flow:
+
+Browser → SYN
+Server → SYN-ACK
+Browser → ACK
+
+Result:
+
+TCP connection established.
+
+TCP Responsibilities:
+
+* Splits data into packets
+* Assigns sequence numbers
+* Detects packet loss
+* Retransmits lost packets
+* Ensures ordered delivery
+
+---
+
+## 4. TLS Handshake (HTTPS)
+
+Purpose:
+Create a secure encrypted connection.
+
+Steps:
+
+1. Client Hello
+2. Server Hello
+3. Server sends Certificate
+4. Browser verifies Certificate
+5. Key Exchange
+6. Session Key Created
+
+Result:
+
+Encrypted communication channel established.
+
+Important:
+
+* SSL is old and deprecated.
+* TLS is the modern protocol.
+* HTTPS = HTTP + TLS
+
+---
+
+## 5. Certificate Validation
+
+Server provides:
+
+* Certificate
+* Public Key
+
+Browser verifies:
+
+* Certificate issuer
+* Domain name
+* Expiration date
+* Certificate chain
+
+Trusted issuers are called Certificate Authorities (CA).
+
+Examples:
+
+* Let's Encrypt
+* DigiCert
+* GlobalSign
+
+---
+
+## 6. HTTP Request
+
+Example:
+
+GET /users HTTP/1.1
+
+Host: api.company.com
+
+HTTP defines:
+
+* GET
+* POST
+* PUT
+* DELETE
+* Headers
+* Status Codes
+
+HTTP does not provide encryption.
+
+TLS provides encryption.
+
+---
+
+## 7. Server Processing
+
+Request reaches:
+
+Load Balancer
+↓
+Application Server
+↓
+Database
+
+Server executes business logic and prepares response.
+
+---
+
+## 8. HTTP Response
+
+Example:
+
+HTTP/1.1 200 OK
+
+{
+"name": "Jai"
+}
+
+Response travels back through:
+
+HTTP
+↓
+TLS
+↓
+TCP
+↓
+IP
+
+---
+
+## 9. Browser Rendering
+
+Browser:
+
+1. Parses HTML
+2. Builds DOM
+3. Parses CSS
+4. Builds CSSOM
+5. Executes JavaScript
+6. Creates Render Tree
+7. Layout Calculation
+8. Paint
+
+Page becomes visible to the user.
+
+---
+
+## Protocol Responsibilities
+
+IP:
+
+* Addressing and routing
+
+TCP:
+
+* Reliable transport
+
+TLS:
+
+* Encryption and security
+
+HTTP:
+
+* Request and response rules
+
+---
+
+## Complete Flow
+
+URL Entered
+↓
+DNS Lookup
+↓
+TCP Handshake
+↓
+TLS Handshake
+↓
+HTTP Request
+↓
+Server Processing
+↓
+HTTP Response
+↓
+Browser Rendering
+
+This entire sequence is commonly referred to as the Web Request-Response Lifecycle.
